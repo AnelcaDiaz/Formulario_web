@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Registros</h1>
+        <p>Por favor, complete los campos del formulario a continuación para registrarse con nosotros.</p>
+        <!--formulario-->
+        <h2>Formulario de registros</h2>
+        <div id="mensajeDiv" class="message"></div>
+        <form id="contactForm">
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="telefono">Telefono</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Usar FormData en lugar de JSON
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('/Formulario', {
+            method: 'POST',
+            body: formData  // ← Enviar como form data, no JSON
+        });
+
+        const result = await response.json();
+        const mensajeDiv = document.getElementById('mensajeDiv');
+
+        if (response.ok) {
+            mensajeDiv.className = 'message success';
+            mensajeDiv.textContent = result.mensaje;
+            document.getElementById('contactForm').reset();
+        } else {
+            mensajeDiv.className = 'message error';
+            mensajeDiv.textContent = result.error;
+        }
+        
+        mensajeDiv.style.display = 'block';
+        setTimeout(() => { mensajeDiv.style.display = 'none'; }, 5000);
+
+    } catch (error) {
+        const mensajeDiv = document.getElementById('mensajeDiv');
+        mensajeDiv.className = 'message error';
+        mensajeDiv.textContent = 'Error de conexión';
+        mensajeDiv.style.display = 'block';
+    }
+});
+</script>
+    
+</body>
+</html>
