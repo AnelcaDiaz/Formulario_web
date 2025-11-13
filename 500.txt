@@ -1,0 +1,24 @@
+Errores frecuentes con git hub al momento de subir un repositorio
+
+-Usamos este para actualizarlo 
+git add .
+
+*En ocasiones,  colocamos "-m" antes del commit lo que puede ocasionar un error y debes ejecutarlo nuevamente
+git commit -m "Evidencia de menu plegable"
+
+git push origin main *Finalizacion
+
+-Antes de hacer el push, puedes verificar si el repositorio remoto está correctamente vinculado con:
+git remote -v
+
+-Aplicacion del git ignore 
+
+Lo usamos para evitar que se suba los archivos pesados como por ejemplo: la carpeta venv
+
+echo ".venv/" >> .gitignore
+git commit -m "Remove .venv from tracking"
+
+Luego se observa en la carpeta, la creacion del documento .gitignore
+
+-Mala importacion
+
