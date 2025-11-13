@@ -20,5 +20,8 @@ git commit -m "Remove .venv from tracking"
 
 Luego se observa en la carpeta, la creacion del documento .gitignore
 
--Mala importacion
+-Nuevo error detectado 
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/AnelcaDiaz/Formulario_web.git'
+
 
