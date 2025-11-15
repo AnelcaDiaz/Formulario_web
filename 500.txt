@@ -23,5 +23,6 @@ Luego se observa en la carpeta, la creacion del documento .gitignore
 -Nuevo error detectado 
  ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://github.com/AnelcaDiaz/Formulario_web.git'
+Este se debe a que no ejecutamos los comandos en git bash, sino en power shell por lo cual el git no lo lee.
 
 
